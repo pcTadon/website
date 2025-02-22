@@ -35,6 +35,30 @@
             padding: 1em;
             margin: 1em 0;
         }
+        .feedback-form {
+            background-color: white;
+            padding: 1em;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .feedback-form input, .feedback-form textarea {
+            width: 100%;
+            padding: 0.5em;
+            margin: 0.5em 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .feedback-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.5em 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .feedback-form button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -46,6 +70,18 @@
         <p>Bonjour ! Je m'appelle Colin et ceci est mon site web personnel.</p>
         <div class="marquee">
             <marquee>Bienvenue sur mon site web ! Profitez de votre visite.</marquee>
+        </div>
+        <h2>Donnez votre avis</h2>
+        <div class="feedback-form">
+            <form action="mailto:votre-email@example.com" method="post" enctype="text/plain">
+                <label for="name">Nom :</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message :</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
         </div>
     </main>
     <footer>
