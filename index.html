@@ -10,54 +10,88 @@
             background-color: #f0f0f0;
             margin: 0;
             padding: 0;
+            text-align: center;
         }
-        header {
+        header, footer {
             background-color: #4CAF50;
             color: white;
             padding: 1em;
-            text-align: center;
         }
         main {
             padding: 2em;
         }
         footer {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 1em;
             position: fixed;
             width: 100%;
             bottom: 0;
         }
+        .annonce {
+            position: fixed;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            background-color: #64ff45;
+            color: #2229e1;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .infos {
+            font-size: 24px;
+            margin-right: 15px;
+        }
         .marquee {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1em;
-            margin: 1em 0;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: defilement 10s linear infinite;
         }
-        .feedback-form {
-            background-color: white;
-            padding: 1em;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        @keyframes defilement {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
         }
-        .feedback-form input, .feedback-form textarea {
+        .wheel-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+        }
+        .wheel {
             width: 100%;
-            padding: 0.5em;
-            margin: 0.5em 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(
+                #ff7f7f 0deg 60deg,
+                #7fbfff 60deg 120deg,
+                #7fff7f 120deg 180deg,
+                #ff7fbf 180deg 240deg,
+                #bf7fff 240deg 300deg,
+                #ffff7f 300deg 360deg
+            );
+            transition: transform 3s ease-out;
         }
-        .feedback-form button {
+        .spin-button, .game button {
+            margin-top: 20px;
             background-color: #4CAF50;
             color: white;
-            padding: 0.5em 1em;
             border: none;
-            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
             cursor: pointer;
+            border-radius: 5px;
         }
-        .feedback-form button:hover {
+        .spin-button:hover, .game button:hover {
             background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
         }
     </style>
 </head>
@@ -68,24 +102,68 @@
     <main>
         <h2>À propos de moi</h2>
         <p>Bonjour ! Je m'appelle Colin et ceci est mon site web personnel.</p>
-        <div class="marquee">
-            <marquee>Bienvenue sur mon site web ! Profitez de votre visite.</marquee>
-        </div>
+        
         <h2>Donnez votre avis</h2>
-        <div class="feedback-form">
-            <form action="mailto:votre-email@example.com" method="post" enctype="text/plain">
-                <label for="name">Nom :</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email" required>
-                <label for="message">Message :</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-                <button type="submit">Envoyer</button>
-            </form>
+
+        <div class="wheel-container">
+            <div class="wheel" id="wheel"></div>
         </div>
+        <button class="spin-button" onclick="spinWheel()">Tourner la roue</button>
+        <div class="result" id="result-wheel"></div>
+
+        <div class="annonce">
+            <div class="infos">Infos :</div>
+            <div class="marquee">Bienvenue sur mon site web ! Profitez de votre visite.</div>
+        </div>
+
+        <div class="game">
+            <h2>Jeu aléatoire : Gagnez des cadeaux !</h2>
+            <button onclick="jouer()">Jouer pour gagner</button>
+            <div class="result" id="result-game"></div>
+        </div>
+        
     </main>
     <footer>
         <p>&copy; 2025 Colin. Tous droits réservés.</p>
     </footer>
+
+    <script>
+        const cadeaux = [
+            "Un voyage en Espagne 🏖️",
+            "Un bon d'achat de 100€ 🛍️",
+            "Un smartphone dernier cri 📱",
+            "Une carte cadeau Netflix 🎬",
+            "Un casque audio sans fil 🎧",
+            "Malheureusement, rien cette fois 😢"
+        ];
+
+        function spinWheel() {
+            const wheel = document.getElementById("wheel");
+            const resultElement = document.getElementById("result-wheel");
+            const spinButton = document.querySelector(".spin-button");
+            spinButton.disabled = true;
+
+            const randomAngle = 720 + Math.floor(Math.random() * 360);
+            wheel.style.transform = `rotate(${randomAngle}deg)`;
+
+            setTimeout(() => {
+                const angle = randomAngle % 360;
+                const segmentSize = 360 / cadeaux.length;
+                let index = Math.floor(angle / segmentSize);
+                
+                // Correction de l'indexation pour bien aligner avec les segments
+                index = (index + cadeaux.length - 1) % cadeaux.length;
+
+                resultElement.innerHTML = `🎉 Félicitations ! Vous avez gagné : ${cadeaux[index]} 🎉`;
+                spinButton.disabled = false;
+            }, 3000);
+        }
+
+        function jouer() {
+            const resultElement = document.getElementById("result-game");
+            const randomIndex = Math.floor(Math.random() * cadeaux.length);
+            resultElement.innerHTML = `🎉 Vous avez gagné : ${cadeaux[randomIndex]} 🎉`;
+        }
+    </script>
 </body>
 </html>
