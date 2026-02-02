@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">        
+    <style>
+        
+        .tv-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 45px;
+            background: rgba(20, 20, 20, 0.95);
+            display: flex;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+            border-top: 3px solid #007bff; /* Barre bleue style TV */
+            z-index: 9999;
+        }
+        .tv-label {
+            background: #007bff;
+            color: white;
+            padding: 0 20px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+        .tv-scroll-zone {
+            flex: 1;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .tv-text {
+            display: inline-block;
+            color: #fff;
+            padding-left: 100%;
+            animation: scroll-tv 20s linear infinite;
+        }
+        @keyframes scroll-tv {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+        .tv-footer:hover .tv-text {
+            animation-play-state: paused;
+        }
+        /* --- SECTION RÉSEAUX SOCIAUX --- */
+        .social-container {
+            text-align: center;
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .social-links {
+            gap: 25px;
+            font-size: 30px;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: #333;
+            transition: 0.3s;
+        }
+        .social-links a:hover { transform: translateY(-5px); }
+        .fa-facebook:hover { color: #1877F2; }
+        .fa-instagram:hover { color: #E4405F; }
+        .fa-youtube:hover { color: #FF0000; } 
+
+        iframe {
+            width: 100%;      /* Prend toute la largeur disponible */
+            height: 300px;    /* Hauteur fixe */
+            border-radius: 10px; /* Bords arrondis pour le style */
+        }
+
+        .card-contact {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            max-width: 350px;
+            margin: 50px 50px auto;
+            padding: 35px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            border-top: 6px solid #352fea;
+        }
+
+        /* EFFET WORDART MODERNE */
+        .titre-contact {
+            font-size: 35px;        /* Taille du texte (ajustable selon vos besoins) */
+            color: #2b1df9;         /* Votre bleu */
+            font-weight: 900;
+            text-shadow: 
+                2px 2px 0px #1a1a7a, /* Ombre bleue foncée pour le relief */
+                4px 4px 0px rgba(0,0,0,0.1);
+            transform: skew(-5deg);
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .info-group {
+            margin-bottom: 25px;
+        }
+
+        .label {
+            display: block;
+            font-size: 0.75rem;
+            color: #aaa;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .valeur {
+            font-size: 1.2rem;
+            color: #333;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 8px 15px;
+            border-radius: 8px;
+            background: #fdf2f2; /* Fond très léger rouge */
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .valeur:hover {
+            background: #2b1df9;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .form-container {
+            max-width: 450px;
+            margin: 50px 50px 50px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        .form-title {
+            font-size: 25px;        /* Taille du texte (ajustable selon vos besoins) */
+            color: #2b1df9;         /* Votre bleu */
+            font-weight: 900;
+            text-shadow: 
+                2px 2px 0px #1a1a7a, /* Ombre bleue foncée pour le relief */
+                4px 4px 0px rgba(0,0,0,0.1);
+            transform: skew(-5deg);
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            display: block;
+            text-align: center;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        /* Style des champs */
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #333;
+            border: none;
+            border-bottom: 2px solid #ddd;
+            outline: none;
+            background: transparent;
+            transition: 0.3s;
+        }
+
+        /* Animation de la bordure lors du clic */
+        .input-group input:focus, .input-group textarea:focus {
+            border-bottom: 2px solid #c02929;
+        }
+
+        /* Animation du label qui monte */
+        .input-group label {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            color: #999;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus ~ label,
+        .input-group input:not(:placeholder-shown) ~ label,
+        .input-group textarea:focus ~ label,
+        .input-group textarea:not(:placeholder-shown) ~ label {
+            top: -18px;
+            font-size: 12px;
+            color: #c02929;
+            font-weight: bold;
+        }
+
+        /* Bouton avec effet de glissement */
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #2b1df9;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: 0.4s;
+        }
+
+        .btn-submit:hover {
+            background: #333;
+            letter-spacing: 1px;
+        }
+
+        .btn-submit:hover .icon {
+            transform: translateX(5px);
+        }
+
+        .conteneur-parent {
+            display: flex;         /* Aligne les enfants sur une ligne */
+            gap: 20px;             /* Espace entre les deux fenêtres */
+            justify-content: center; /* Centre l'ensemble sur la page */
+            padding: 20px;
+        }
+
+        .form-container , .card-contact {
+            flex: 1;               /* Donne la même largeur aux deux fenêtres */
+            min-width: 300px;      /* Largeur minimale avant de passer à la ligne */
+            border: 1px solid #ccc;
+            padding: 15px;
+            background: #f9f9f9;
+        }
+
+        .Logo-compagny {
+            width: 300px;     /* Largeur souhaitée */
+            height: 100px;    /* Même hauteur pour un carré parfait */
+            border: 2px solid #007bff; /* Ajoute un contour bleu */
+            border-radius: 15px;
+        }
+
+        .police-text {
+            display: inline-block;
+            text-decoration: none; /* Enlève le soulignement */
+            color: #ffffff;        /* Couleur du texte */
+            background-color: #007bff; /* Couleur de fond */
+            padding: 10px 20px;    /* Espacement intérieur */
+            border-radius: 5px;    /* Bords arrondis */
+            font-family: Arial, sans-serif;
+            transition: 0.3s;      /* Animation fluide */
+            }
+
+            .police-text:hover {
+                background-color: #0056b3; /* Change de couleur au survol */
+                transform: translateY(-2px); /* Petit saut vers le haut */
+            }
+
+            .profil-div {
+                text-align: center;
+                background: white;
+                padding: 20px;
+                border-radius: 15px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                border: 2px solid #007bff; /* Ajoute un contour bleu */
+            }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="profil-div">
+        <center>
+            <img src="file:///C:/Users/tadon/Desktop/Nouveau site web/logo.png" class="Logo-compagny" alt="profil">
+        </center>
+
+        <center>
+        <p>
+            <a href="file:///C:/Users/tadon/Desktop/Nouveau site web/acceuil.html" class="police-text">Acceuil</a>
+            <a href="file:///C:/Users/tadon/Desktop/Nouveau site web/services.html" class="police-text">Services</a>
+            <a href="file:///C:/Users/tadon/Desktop/Nouveau site web/buy.html" class="police-text">Acheter</a>
+            <a href="file:///C:/Users/tadon/Desktop/Nouveau site web/download.html" class="police-text">Telechargements</a>
+            <a href="file:///C:/Users/tadon/Desktop/Nouveau site web/infos.html" class="police-text">A propos</a>
+            <a href="file:///C:/Users/tadon/Desktop/Nouveau site web/contact.html" class="police-text">Contact</a>
+        </p>
+        </center>
+    </div>
+
+        <div class="conteneur-parent">
+            <div class="card-contact">
+                <h2 class="titre-contact">Contactez-nous</h2>
+                
+                <div class="info-group">
+                    <span class="label">Téléphone</span>
+                    <a href="tel:+32467661840" class="valeur">+32 467 66 18 40</a>
+                </div>
+
+                <div class="info-group">
+                    <span class="label">E-mail</span>
+                    <a href="mailto:tadonpc@gmail.com" class="valeur">tadonpc@gmail.com</a>
+                </div>
+            </div>
+
+            <div class="form-container">
+                <form id="contactForm">
+                    <h2 class="form-title">Formulaire De Contact</h2>
+                    
+                    <div class="input-group">
+                        <input type="text" id="name" name="name" required placeholder=" ">
+                        <label for="name">Votre Nom</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" id="email" name="email" required placeholder=" ">
+                        <label for="email">Votre E-mail</label>
+                    </div>
+
+                    <div class="input-group">
+                        <textarea id="message" name="message" rows="4" required placeholder=" "></textarea>
+                        <label for="message">Votre Message</label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <span>submit</span>
+                        <div class="icon">➔</div>
+                    </button>
+                </form>
+            </div>
+
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+        <script src="mail.js"></script>
+        </div>
+    
+    
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2539.520508777243!2d3.9522800756826535!3d50.46865297159557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNTDCsDI4JzA3LjIiTiAzwrA1NycxNy41IkU!5e0!3m2!1sfr!2sbe!4v1768086922990!5m2!1sfr!2sbe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <div class="social-container">
+        <h3>Suivez-nous</h3>
+        <div class="social-links">
+            <a href="#" class="fab fa-facebook"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-youtube"></a>
+        </div>
+    </div>
+    
+
+    <footer class="tv-footer">
+        <div class="tv-label">DIRECT</div>
+        <div class="tv-scroll-zone">
+            <div class="tv-text">
+                📢 INFO : Le site est maintenant en ligne ! — 🚀 Nouveau : Découvrez notre section boutique — 🕒 Horaires : Ouvert de 9h à 18h — 📧 Contactez-nous pour toute question.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
