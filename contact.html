@@ -20,6 +20,7 @@
             border-bottom: 3px solid #007bff;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             position: relative;
+            z-index: 1000; /* Assure que le header reste au-dessus du Hero */
         }
 
         .Logo-compagny {
@@ -73,6 +74,7 @@
             justify-content: center;
             color: white;
             text-align: center;
+            z-index: 1; /* Priorité basse */
         }
 
         .hero-banner::before {
@@ -174,10 +176,15 @@
             .menu-icon { display: block; }
             .nav-links {
                 position: absolute; top: 100%; left: 0; width: 100%; background: white;
-                flex-direction: column; max-height: 0; overflow: hidden; box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                flex-direction: column; max-height: 0; overflow: hidden; 
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                z-index: 2000; /* Plus haut que la bannière Hero */
             }
             .nav-links.active { max-height: 500px; padding: 10px 0; }
-            .police-text { width: 90%; margin: 5px auto; text-align: center; }
+            .police-text { 
+                width: 90%; margin: 5px auto; text-align: center; 
+                background-color: #007bff; color: white; /* Force le bouton visible sur fond blanc */
+            }
             #page-title { font-size: 24px; }
         }
     </style>
@@ -238,7 +245,7 @@
         </div>
     </div>
 
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2530.687265636043!2d4.85!3d50.46!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDI3JzM2LjAiTiA0wrA1MScwMC4wIkU!5e0!3m2!1sfr!2sbe!4v1643734000000" loading="lazy"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d20300.91350909758!2d4.8674634!3d50.4647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sbe!4v1700000000000" loading="lazy"></iframe>
 
     <div class="social-container">
         <h3>Suivez-nous</h3>
@@ -259,17 +266,15 @@
     <script>
         function toggleMenu() {
             const nav = document.getElementById("navbar");
-            const icon = document.querySelector(".menu-icon i");
-            
             nav.classList.toggle("active");
-            
-            // Animation de l'icône
-            if (nav.classList.contains("active")) {
-                icon.classList.replace("fa-bars", "fa-times");
-            } else {
-                icon.classList.replace("fa-times", "fa-bars");
-            }
         }
+
+        document.querySelectorAll('.police-text').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('page-title').textContent = this.textContent;
+                document.getElementById("navbar").classList.remove("active");
+            });
+        });
     </script>
 </body>
 </html>
