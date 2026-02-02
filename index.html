@@ -3,167 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colin Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">        
     <style>
+        :root {
+            --blue-primary: #007bff;
+            --blue-hover: #0056b3;
+            --dark-bg: rgba(20, 20, 20, 0.95);
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
             margin: 0;
-            padding: 0;
+            padding-bottom: 60px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f7f6;
+        }
+
+        /* --- ENTÊTE & NAVIGATION --- */
+        .profil-div {
+            background: white;
+            padding: 20px;
+            border-bottom: 3px solid var(--blue-primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .Logo-compagny {
+            width: 200px;
+            height: auto;
+            border: 2px solid var(--blue-primary);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .police-text {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: var(--blue-primary);
+            padding: 10px 18px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            font-size: 0.9em;
+        }
+
+        .police-text:hover {
+            background-color: var(--blue-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Menu Mobile (Hamburger) */
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            color: var(--blue-primary);
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 30px;
+        }
+
+        /* --- CONTENU PRINCIPAL --- */
+        .main-content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
             text-align: center;
         }
-        header, footer {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1em;
+
+        .photo-profil {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--blue-primary);
+            margin-bottom: 20px;
         }
-        main {
-            padding: 2em;
+
+        .conteneur-texte {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: left;
         }
-        footer {
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+
+        .liste-avantages {
+            margin: 20px 0;
+            padding-left: 20px;
         }
-        .annonce {
-            position: fixed;
-            bottom: 60px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            background-color: #64ff45;
-            color: #2229e1;
-            font-weight: bold;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+        .Logo-ecole {
+            width: 250px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+
+        /* --- RÉSEAUX SOCIAUX --- */
+        .social-container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid #007bff; /* Ajoute un contour bleu */
+        }
+
+        .social-links {
             display: flex;
             justify-content: center;
+            gap: 30px;
+            font-size: 35px;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: #333;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover { transform: scale(1.2); }
+        .fa-facebook:hover { color: #1877F2; }
+        .fa-instagram:hover { color: #E4405F; }
+        .fa-youtube:hover { color: #FF0000; }
+
+        /* --- FOOTER STYLE TV --- */
+        .tv-footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 45px;
+            background: var(--dark-bg);
+            display: flex;
             align-items: center;
+            border-top: 3px solid var(--blue-primary);
+            z-index: 10000;
         }
-        .infos {
-            font-size: 24px;
-            margin-right: 15px;
+
+        .tv-label {
+            background: var(--blue-primary);
+            color: white;
+            padding: 0 15px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 0.8em;
         }
-        .marquee {
-            white-space: nowrap;
+
+        .tv-scroll-zone {
+            flex: 1;
             overflow: hidden;
-            display: inline-block;
-            animation: defilement 10s linear infinite;
+            white-space: nowrap;
         }
-        @keyframes defilement {
-            from { transform: translateX(100%); }
+
+        .tv-text {
+            display: inline-block;
+            color: #fff;
+            padding-left: 100%;
+            animation: scroll-tv 25s linear infinite;
+        }
+
+        @keyframes scroll-tv {
+            from { transform: translateX(0); }
             to { transform: translateX(-100%); }
         }
-        .wheel-container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            margin: 20px auto;
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .menu-icon { display: block; }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 10px;
+                padding-top: 15px;
+            }
+
+            .nav-links.active { display: flex; }
+
+            .police-text { width: 100%; text-align: center; box-sizing: border-box; }
+            
+            .Logo-compagny { width: 140px; }
         }
-        .wheel {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: conic-gradient(
-                #ff7f7f 0deg 60deg,
-                #7fbfff 60deg 120deg,
-                #7fff7f 120deg 180deg,
-                #ff7fbf 180deg 240deg,
-                #bf7fff 240deg 300deg,
-                #ffff7f 300deg 360deg
-            );
-            transition: transform 3s ease-out;
-        }
-        .spin-button, .game button {
-            margin-top: 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .spin-button:hover, .game button:hover {
-            background-color: #45a049;
-        }
-        .result {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #333;
-        }
+        
     </style>
 </head>
 <body>
-    <header>
-        <h1>Bienvenue sur le site de Colin</h1>
-    </header>
-    <main>
-        <h2>À propos de moi</h2>
-        <p>Bonjour ! Je m'appelle Colin et ceci est mon site web personnel.</p>
+
+    <header class="profil-div">
+        <img src="logo.png" class="Logo-compagny" alt="Logo Entreprise">
         
-        <h2>Donnez votre avis</h2>
-
-        <div class="wheel-container">
-            <div class="wheel" id="wheel"></div>
-        </div>
-        <button class="spin-button" onclick="spinWheel()">Tourner la roue</button>
-        <div class="result" id="result-wheel"></div>
-
-        <div class="annonce">
-            <div class="infos">Infos :</div>
-            <div class="marquee">Bienvenue sur mon site web ! Profitez de votre visite.</div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
         </div>
 
-        <div class="game">
-            <h2>Jeu aléatoire : Gagnez des cadeaux !</h2>
-            <button onclick="jouer()">Jouer pour gagner</button>
-            <div class="result" id="result-game"></div>
-        </div>
+        <nav class="nav-links" id="navbar">
+            <a href="acceuil.html" class="police-text">Accueil</a>
+            <a href="services.html" class="police-text">Services</a>
+            <a href="buy.html" class="police-text">Achats</a>
+            <a href="download.html" class="police-text">Téléchargements</a>
+            <a href="infos.html" class="police-text">À propos</a>
+            <a href="contact.html" class="police-text">Contact</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
         
     </main>
-    <footer>
-        <p>&copy; 2025 Colin. Tous droits réservés.</p>
+
+    <div class="social-container">
+        <h3>Suivez-nous</h3>
+        <div class="social-links">
+            <a href="#" class="fab fa-facebook"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="https://www.youtube.com/@colin_donfack?sub_confirmation=1" class="fab fa-youtube"></a>
+        </div>
+    </div>
+
+    <footer class="tv-footer">
+        <div class="tv-label">DIRECT</div>
+        <div class="tv-scroll-zone">
+            <div class="tv-text">
+                📢 INFO : Le site est maintenant en ligne ! — 🚀 Nouveau : Découvrez notre section boutique — 🕒 Horaires : Ouvert de 9h à 18h — 📧 Contactez-nous pour toute question.
+            </div>
+        </div>
     </footer>
 
     <script>
-        const cadeaux = [
-            "Un voyage en Espagne 🏖️",
-            "Un bon d'achat de 100€ 🛍️",
-            "Un smartphone dernier cri 📱",
-            "Une carte cadeau Netflix 🎬",
-            "Un casque audio sans fil 🎧",
-            "Malheureusement, rien cette fois 😢"
-        ];
-
-        function spinWheel() {
-            const wheel = document.getElementById("wheel");
-            const resultElement = document.getElementById("result-wheel");
-            const spinButton = document.querySelector(".spin-button");
-            spinButton.disabled = true;
-
-            const randomAngle = 720 + Math.floor(Math.random() * 360);
-            wheel.style.transform = `rotate(${randomAngle}deg)`;
-
-            setTimeout(() => {
-                const angle = randomAngle % 360;
-                const segmentSize = 360 / cadeaux.length;
-                let index = Math.floor(angle / segmentSize);
-                
-                // Correction de l'indexation pour bien aligner avec les segments
-                index = (index + cadeaux.length - 1) % cadeaux.length;
-
-                resultElement.innerHTML = `🎉 Félicitations ! Vous avez gagné : ${cadeaux[index]} 🎉`;
-                spinButton.disabled = false;
-            }, 3000);
-        }
-
-        function jouer() {
-            const resultElement = document.getElementById("result-game");
-            const randomIndex = Math.floor(Math.random() * cadeaux.length);
-            resultElement.innerHTML = `🎉 Vous avez gagné : ${cadeaux[randomIndex]} 🎉`;
+        function toggleMenu() {
+            const nav = document.getElementById("navbar");
+            nav.classList.toggle("active");
         }
     </script>
+
 </body>
 </html>
