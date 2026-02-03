@@ -196,6 +196,36 @@
             
             .Logo-compagny { width: 140px; }
         }
+
+        /* --- BANNIÈRE DYNAMIQUE (HERO) --- */
+        .hero-banner {
+            position: relative;
+            height: 250px;
+            background: #2c3e50 url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            z-index: 1; /* Priorité basse */
+        }
+
+        .hero-banner::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        #page-title {
+            position: relative;
+            font-size: 35px;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0px #1a1a7a;
+            transform: skew(-5deg);
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -215,6 +245,10 @@
             <a href="contact.html" class="police-text">Contact</a>
         </nav>
     </header>
+
+    <section class="hero-banner">
+        <h1 id="page-title">À propos</h1>
+    </section>
 
     <main class="main-content">
         <img src="Colin.jpg" class="photo-profil" alt="Photo de Colin">
