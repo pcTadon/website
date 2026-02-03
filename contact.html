@@ -151,14 +151,17 @@
         }
         .btn-submit:hover { background: #333; }
 
-        /* --- MAP & SOCIAL --- */
-        iframe { width: 100%; height: 300px; border: none; margin-top: 20px; }
-        .social-container { text-align: center; padding: 40px; background: white; }
-        .social-links { font-size: 30px; display: flex; justify-content: center; gap: 25px; }
-        .social-links a { color: #333; transition: 0.3s; }
-        .fa-facebook:hover { color: #1877F2; }
-        .fa-instagram:hover { color: #E4405F; }
-        .fa-youtube:hover { color: #FF0000; }
+        /* --- CONTENU & FOOTER --- */
+        .main-content { max-width: 800px; margin: 40px auto; padding: 20px; text-align: center; }
+
+        .social-container {
+            text-align: center; background: white; padding: 20px; margin: 20px;
+            border-radius: 15px; border: 2px solid var(--blue-primary);
+        }
+
+        .social-links { display: flex; justify-content: center; gap: 30px; font-size: 35px; }
+        .social-links a { text-decoration: none; color: #333; transition: 0.3s; }
+        .social-links a:hover { transform: scale(1.2); }
 
         /* --- FOOTER TV --- */
         .tv-footer {
