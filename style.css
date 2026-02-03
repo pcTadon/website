@@ -34,8 +34,8 @@
     .nav-links {
         display: flex;
         gap: 15px;
-        flex-wrap: wrap;
         justify-content: center;
+        transition: all 0.4s ease-in-out;
     }
 
     .police-text {
@@ -54,112 +54,15 @@
         transform: translateY(-2px);
     }
 
-    /* Menu Mobile (Hamburger) */
     .menu-icon {
         display: none;
-        font-size: 24px;
+        font-size: 26px;
         color: var(--blue-primary);
         cursor: pointer;
         position: absolute;
         right: 20px;
-        top: 30px;
-    }
-
-    /* --- CONTENU PRINCIPAL --- */
-    .main-content {
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
-        text-align: center;
-    }
-
-    /* --- RÉSEAUX SOCIAUX --- */
-    .social-container {
-        text-align: center;
-        background: white;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        border: 2px solid #007bff; /* Ajoute un contour bleu */
-    }
-
-    .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        font-size: 35px;
-    }
-
-    .social-links a {
-        text-decoration: none;
-        color: #333;
-        transition: 0.3s;
-    }
-
-    .social-links a:hover { transform: scale(1.2); }
-    .fa-facebook:hover { color: #1877F2; }
-    .fa-instagram:hover { color: #E4405F; }
-    .fa-youtube:hover { color: #FF0000; }
-
-    /* --- FOOTER STYLE TV --- */
-    .tv-footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        height: 45px;
-        background: var(--dark-bg);
-        display: flex;
-        align-items: center;
-        border-top: 3px solid var(--blue-primary);
-        z-index: 10000;
-    }
-
-    .tv-label {
-        background: var(--blue-primary);
-        color: white;
-        padding: 0 15px;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        font-weight: bold;
-        font-size: 0.8em;
-    }
-
-    .tv-scroll-zone {
-        flex: 1;
-        overflow: hidden;
-        white-space: nowrap;
-    }
-
-    .tv-text {
-        display: inline-block;
-        color: #fff;
-        padding-left: 100%;
-        animation: scroll-tv 25s linear infinite;
-    }
-
-    @keyframes scroll-tv {
-        from { transform: translateX(0); }
-        to { transform: translateX(-100%); }
-    }
-
-    /* --- RESPONSIVE --- */
-    @media (max-width: 768px) {
-        .menu-icon { display: block; }
-
-        .nav-links {
-            display: none;
-            width: 100%;
-            flex-direction: column;
-            gap: 10px;
-            padding-top: 15px;
-        }
-
-        .nav-links.active { display: flex; }
-
-        .police-text { width: 100%; text-align: center; box-sizing: border-box; }
-        
-        .Logo-compagny { width: 140px; }
+        top: 35px;
+        z-index: 1001;
     }
 
     /* --- BANNIÈRE DYNAMIQUE (HERO) --- */
@@ -190,4 +93,98 @@
         text-shadow: 2px 2px 0px #1a1a7a;
         transform: skew(-5deg);
         margin: 0;
+    }
+
+    /* --- RESPONSIVE MOBILE --- */
+    @media (max-width: 768px) {
+        .menu-icon { display: block; }
+
+        .nav-links {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            flex-direction: column;
+            gap: 0;
+            max-height: 0;
+            overflow: hidden;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-links.active {
+            max-height: 400px; /* Ajuster selon le nombre de liens */
+        }
+
+        .police-text {
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+            border-radius: 0;
+            background: white;
+            color: var(--blue-primary);
+            border-bottom: 1px solid #eee;
+            padding: 15px;
+        }
+
+        .police-text:hover {
+            background-color: #f8f9fa;
+            transform: none;
+        }
+
+        .Logo-compagny { width: 140px; }
+    }
+
+    /* --- RÉSEAUX SOCIAUX --- */
+        .social-container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid #007bff; /* Ajoute un contour bleu */
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-size: 35px;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: #333;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover { transform: scale(1.2); }
+        .fa-facebook:hover { color: #1877F2; }
+        .fa-instagram:hover { color: #E4405F; }
+        .fa-youtube:hover { color: #FF0000; }
+    
+    /* --- CONTENU & FOOTER --- */
+    .main-content { max-width: 800px; margin: 40px auto; padding: 20px; text-align: center; }
+
+    .tv-footer {
+        position: fixed; bottom: 0; width: 100%; height: 45px;
+        background: var(--dark-bg); display: flex; align-items: center;
+        border-top: 3px solid var(--blue-primary); z-index: 10000;
+    }
+
+    .tv-label {
+        background: var(--blue-primary); color: white; padding: 0 15px;
+        height: 100%; display: flex; align-items: center; font-weight: bold;
+    }
+
+    .tv-scroll-zone { flex: 1; overflow: hidden; white-space: nowrap; }
+    .tv-text {
+        display: inline-block; color: #fff; padding-left: 100%;
+        animation: scroll-tv 25s linear infinite;
+    }
+
+    @keyframes scroll-tv {
+        from { transform: translateX(0); }
+        to { transform: translateX(-100%); }
     }
