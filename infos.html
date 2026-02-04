@@ -70,7 +70,16 @@
     <script>
         function toggleMenu() {
             const nav = document.getElementById("navbar");
+            const icon = document.querySelector(".menu-icon i");
+            
             nav.classList.toggle("active");
+            
+            // Animation de l'icône
+            if (nav.classList.contains("active")) {
+                icon.classList.replace("fa-bars", "fa-times");
+            } else {
+                icon.classList.replace("fa-times", "fa-bars");
+            }
         }
     </script>
 

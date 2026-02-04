@@ -85,15 +85,17 @@
     <script>
         function toggleMenu() {
             const nav = document.getElementById("navbar");
+            const icon = document.querySelector(".menu-icon i");
+            
             nav.classList.toggle("active");
+            
+            // Animation de l'icône
+            if (nav.classList.contains("active")) {
+                icon.classList.replace("fa-bars", "fa-times");
+            } else {
+                icon.classList.replace("fa-times", "fa-bars");
+            }
         }
-
-        document.querySelectorAll('.police-text').forEach(link => {
-            link.addEventListener('click', function() {
-                document.getElementById('page-title').textContent = this.textContent;
-                document.getElementById("navbar").classList.remove("active");
-            });
-        });
     </script>
 </body>
 </html>
