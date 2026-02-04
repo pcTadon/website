@@ -188,3 +188,26 @@
         from { transform: translateX(0); }
         to { transform: translateX(-100%); }
     }
+
+    /* --- CONTENU PRINCIPAL --- */
+        .main-content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .photo-profil {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--blue-primary);
+            margin-bottom: 20px;
+        }
+
+        .Logo-ecole {
+            width: 250px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
