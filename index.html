@@ -28,24 +28,10 @@
         <h1 id="page-title">Accueil</h1>
     </section>
 
-    <div class="bird-area">
-        <div class="bird-container" style="top: 15%; animation-delay: 0s; animation-duration: 15s;"><div class="bird"></div></div>
-        <div class="bird-container" style="top: 35%; animation-delay: 5s; animation-duration: 20s;"><div class="bird"></div></div>
-        <div class="bird-container" style="top: 55%; animation-delay: 10s; animation-duration: 12s;"><div class="bird"></div></div>
-    </div><div class="bird-area">
-        <div class="bird-container" style="top: 15%; animation-delay: 0s; animation-duration: 15s;"><div class="bird"></div></div>
-        <div class="bird-container" style="top: 35%; animation-delay: 5s; animation-duration: 20s;"><div class="bird"></div></div>
-        <div class="bird-container" style="top: 55%; animation-delay: 10s; animation-duration: 12s;"><div class="bird"></div></div>
-    </div>
 
     <main class="main-content">
         <h2>Bienvenue sur votre interface</h2>
         <p>Le menu s'adapte automatiquement à votre écran.</p>
-
-        <div class="counter-container">
-            <h3>Visiteurs</h3>
-            <div id="counter">0</div>
-        </div>
     </main>
 
     <div class="social-container">
@@ -81,15 +67,6 @@
             }
         }
 
-        // Récupérer la valeur actuelle ou initialiser à 0
-        let count = localStorage.getItem('visitorCount') || 0;
-
-        // Incrémenter
-        count++;
-
-        // Sauvegarder et afficher
-        localStorage.setItem('visitorCount', count);
-        document.getElementById('counter').innerText = count;
     </script>
 
 </body>
