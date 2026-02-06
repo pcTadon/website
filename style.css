@@ -309,3 +309,18 @@
             50% { transform: translateX(50vw) translateY(-5vh) scale(0.5); }
             100% { transform: translateX(110vw) translateY(0vh) scale(0.4); }
         }
+
+        .counter-container {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            border: 2px solid #333;
+            width: 150px;
+            border-radius: 10px;
+        }
+
+        #counter {
+            font-size: 2em;
+            font-weight: bold;
+            color: #007bff;
+        }
