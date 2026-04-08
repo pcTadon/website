@@ -31,83 +31,120 @@
     </section>
 
     <main class="main-content">
-        <section class="intro-section">
-            <h2 class="section-title">Mes Solutions Techniques</h2>
+        <section class="intro-section mb-5">
+            <h2 class="section-title">Solutions Techniques Intégrées</h2>
             <p class="intro-text">
-                Alliant rigueur industrielle et innovation logicielle, je propose des services sur mesure pour optimiser vos processus de production et de santé.
+                <strong>COLIN_HTECH</strong> déploie des solutions polyvalentes pour répondre aux défis de l'Industrie 4.0 et du secteur médical. Notre approche repose sur la maîtrise complète du cycle de vie d'un projet : de la conception électrique à la supervision digitale.
             </p>
         </section>
 
         <div class="expertise-grid">
             <div class="expertise-card">
-                <i class="fas fa-microchip"></i>
-                <h3>Programmation PLC / IHM</h3>
-                <p>Conception et mise à jour de programmes pour automates (Siemens, Schneider, Beckhoff). Optimisation des interfaces homme-machine pour un pilotage intuitif.</p>
-            </div>
-
-            <div class="expertise-card">
-                <i class="fas fa-bolt"></i>
-                <h3>Schémas Électriques</h3>
-                <p>Conception de plans d'armoires et de câblage sur EPLAN ou AutoCAD Electrical, en respectant les normes de sécurité en vigueur.</p>
-            </div>
-
-            <div class="expertise-card">
-                <i class="fas fa-heartbeat"></i>
-                <h3>Technologies de la Santé</h3>
-                <p>Maintenance préventive et curative de dispositifs médicaux. Mise en conformité technique et gestion des protocoles de test (ISO 13485).</p>
+                <i class="fas fa-robot"></i>
+                <h3>Automatisme Industriel</h3>
+                <p>Programmation avancée de PLC (Siemens TIA Portal, Schneider EcoStruxure). Développement d'interfaces IHM dynamiques pour un contrôle total de vos lignes de production.</p>
             </div>
 
             <div class="expertise-card">
                 <i class="fas fa-laptop-code"></i>
-                <h3>Création Web & Vitrine</h3>
-                <p>Développement de sites web modernes (HTML/CSS/JS) et optimisés pour le référencement, pour digitaliser votre activité professionnelle.</p>
+                <h3>Développement Web & Vitrine</h3>
+                <p>Création de sites web modernes, réactifs et optimisés (HTML5, CSS3, JS). Digitalisation complète de votre activité pour une visibilité accrue.</p>
             </div>
 
             <div class="expertise-card">
-                <i class="fas fa-code"></i>
-                <h3>Développement Logiciel</h3>
-                <p>Conception d'outils de gestion de données ou d'applications desktop (Python, C++) pour l'analyse de mesures ou l'automatisation de tâches.</p>
+                <i class="fas fa-heart-pulse"></i>
+                <h3>Health Technology</h3>
+                <p>Maintenance spécialisée de dispositifs médicaux et conception de plateformes participatives pour le secteur hospitalier (Chirurgie Bariatrique).</p>
             </div>
 
             <div class="expertise-card">
-                <i class="fas fa-network-wired"></i>
-                <h3>IoT & Supervision</h3>
-                <p>Installation de capteurs connectés et mise en place de tableaux de bord (SCADA) pour le suivi de production en temps réel.</p>
+                <i class="fas fa-file-code"></i>
+                <h3>Ingénierie Logicielle</h3>
+                <p>Développement d'outils sur mesure en C#, Python et Java. Expert en algorithmes de génération de G-Code et traitement de données industrielles.</p>
+            </div>
+
+            <div class="expertise-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Conception Électrique</h3>
+                <p>Étude et réalisation de schémas électriques complexes via AutoCAD Electrical et Fusion 360. Audit de sécurité et mise en conformité des installations.</p>
+            </div>
+
+            <div class="expertise-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Supervision & GMAO</h3>
+                <p>Mise en place de systèmes de supervision pour le suivi de performance en temps réel et optimisation de la maintenance assistée par ordinateur.</p>
             </div>
         </div>
+
+        <section class="container my-5 py-5 rounded-4 shadow-lg text-white" style="background: #1a1a1a;">
+            <div class="row align-items-center p-4">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="display-6 fw-bold text-primary">Laboratoire Digital</h2>
+                    <p class="lead opacity-75">Démonstration : Générateur de QR Code pour la maintenance.</p>
+                    <p class="small">Utilisez cet outil pour générer instantanément des codes QR liant vos machines à leurs documentations techniques ou vos actifs numériques.</p>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="qr-wrapper mx-auto p-4 rounded-4" style="background: #222; border: 1px solid #333; max-width: 400px;">
+                        <div class="qr-form">
+                            <input type="text" id="qrInput" class="form-control mb-3 p-3 bg-dark text-white border-secondary" 
+                                   placeholder="URL ou Texte (ex: Machine_01_Log)">
+                            <button onclick="generateQR()" id="genBtn" class="btn btn-primary w-100 py-3 fw-bold shadow">
+                                Générer le QR Code
+                            </button>
+                        </div>
+                        <div id="qrResult" class="qr-code mt-4 d-none text-center p-3 rounded bg-white">
+                            <img src="" id="qrImg" alt="qr-code" class="img-fluid" style="width: 180px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <div class="social-container">
-        <h3>Suivez-nous</h3>
+        <h3>Propulsez votre entreprise avec COLIN_HTECH</h3>
         <div class="social-links">
-            <a href="#" class="fab fa-facebook"></a>
-            <a href="#" class="fab fa-instagram"></a>
-            <a href="https://www.youtube.com/@colin_donfack?sub_confirmation=1" class="fab fa-youtube"></a>
+            <a href="https://linkedin.com/in/colin-donfack-tadonkemwa-5a59b62b9/" target="_blank" class="fab fa-linkedin"></a>
+            <a href="https://github.com/jinay26" target="_blank" class="fab fa-github"></a>
+            <a href="https://www.youtube.com/@colin_donfack?sub_confirmation=1" target="_blank" class="fab fa-youtube"></a>
         </div>
     </div>
 
     <footer class="tv-footer">
-        <div class="tv-label">DIRECT</div>
+        <div class="tv-label">SERVICES</div>
         <div class="tv-scroll-zone">
             <div class="tv-text">
-                📢 INFO : Le site est maintenant en ligne ! — 🚀 Nouveau : Découvrez notre section boutique — 🕒 Horaires : Ouvert de 9h à 18h — 📧 Contactez-nous pour toute question.
+                🚀 Automatisation Industrielle — Développement Web Fullstack — Expertise Health Tech — Contact : tadonpc@gmail.com — COLIN_HTECH : L'innovation sans limite.
             </div>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function toggleMenu() {
             const nav = document.getElementById("navbar");
             const icon = document.querySelector(".menu-icon i");
-            
             nav.classList.toggle("active");
+            nav.classList.contains("active") ? icon.classList.replace("fa-bars", "fa-times") : icon.classList.replace("fa-times", "fa-bars");
+        }
+
+        function generateQR() {
+            const input = document.getElementById("qrInput");
+            const btn = document.getElementById("genBtn");
+            const img = document.getElementById("qrImg");
+            const resultDiv = document.getElementById("qrResult");
             
-            // Animation de l'icône
-            if (nav.classList.contains("active")) {
-                icon.classList.replace("fa-bars", "fa-times");
-            } else {
-                icon.classList.replace("fa-times", "fa-bars");
-            }
+            let qrValue = input.value.trim();
+            if (!qrValue) return;
+            
+            btn.innerText = "Génération...";
+            img.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrValue)}`;
+            
+            img.onload = function() {
+                resultDiv.classList.remove("d-none");
+                btn.innerText = "Générer le QR Code";
+            };
         }
     </script>
 
